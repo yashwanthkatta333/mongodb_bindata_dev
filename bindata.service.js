@@ -53,7 +53,7 @@ exports.putdataintobindata = async (data) => {
   console.log("putting records into dev_db");
   await model.insertMany(data);
   const end = Date.now();
-  console.log(`sucessfully inserted records in ${end - start} seconds`);
+  console.log(`sucessfully inserted records in ${end - start} milliseconds`);
 };
 exports.getrecordsfrombindata = async (mints, maxts) => {
   const start = Date.now();

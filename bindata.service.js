@@ -1,13 +1,15 @@
 const json = require("big-json");
 const url =
   "mongodb://mvm-vigo-service1:v1taLs0nt%23Eg0@host.docker.internal:27018/mvm2-data-service?authSource=admin";
+const url_dev =
+  "mongodb://mvm-vigo-service1:v1taLs0nt%23Eg0@mongo.dev.vigolocal:27017/mvm2-data-service?authSource=admin";
 const mongoose = require("mongoose");
 const vv330_data_model = require("./vv33_patch.model");
 const model = require("./bin.data.model");
 const { assign } = require("lodash");
 
 exports.connect = async () => {
-  await mongoose.connect(url);
+  await mongoose.connect(url_dev);
   console.log("db");
 };
 const parseStream = json.createParseStream();

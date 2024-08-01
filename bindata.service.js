@@ -42,10 +42,8 @@ async function parseData(item) {
 exports.getrecordsfromdev = async () => {
   console.log("in counting");
   const data = await vv330_data_model
-    .find({
-      caseNumber: { $nin: ["VC001VP16428", "VC001VP10002", "VC001VP10003"] },
-    })
-    .limit(59725);
+    .find({   })
+    .limit(500000);
   const parsedData = await Promise.all(data.map(parseData));
   // console.log("counting done");
   return parsedData;

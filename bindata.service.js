@@ -1,6 +1,6 @@
 const json = require("big-json");
 const url =
-  "mongodb://mvm-vigo-service1:v1taLs0nt%23Eg0@mongo.dev.vigolocal:27017/mvm2-data-service?authSource=admin";
+  "mongodb://mvm-vigo-service1:v1taLs0nt%23Eg0@host.docker.internal:27018/mvm2-data-service?authSource=admin";
 const mongoose = require("mongoose");
 const vv330_data_model = require("./vv33_patch.model");
 const model = require("./bin.data.model");
@@ -41,9 +41,7 @@ async function parseData(item) {
 
 exports.getrecordsfromdev = async () => {
   console.log("in counting");
-  const data = await vv330_data_model
-    .find({   })
-    .limit(3600);
+  const data = await vv330_data_model.find({}).limit(10000);
   const parsedData = await Promise.all(data.map(parseData));
   // console.log("counting done");
   return parsedData;
@@ -55,12 +53,12 @@ exports.putdataintobindata = async (data) => {
   const end = Date.now();
   console.log(`sucessfully inserted records in ${end - start} milliseconds`);
 };
-exports.getrecordsfrombindata = async (mints, maxts) => {
+exports.getrecordsfrombindata = async (mints, maxt) => {
   const start = Date.now();
   console.log("getting records from dev_db");
   const query = {
-  //   caseNumber: "VC001VP16428",
-  //   createdAt: { $gte: mints, $lte: maxts },
+    //   caseNumber: "VC001VP16428",
+    //   createdAt: { $gte: mints, $lte: maxts },
   };
   const datagot = await model.find(query);
   console.log(datagot.length);

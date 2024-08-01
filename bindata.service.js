@@ -43,7 +43,7 @@ exports.getrecordsfromdev = async () => {
   console.log("in counting");
   const data = await vv330_data_model
     .find({   })
-    .limit(500000);
+    .limit(3600);
   const parsedData = await Promise.all(data.map(parseData));
   // console.log("counting done");
   return parsedData;

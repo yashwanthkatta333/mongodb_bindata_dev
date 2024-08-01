@@ -61,11 +61,11 @@ exports.getrecordsfrombindata = async (mints, maxts) => {
   const start = Date.now();
   console.log("getting records from dev_db");
   const query = {
-    caseNumber: "VC001VP16428",
-    createdAt: { $gte: mints, $lte: maxts },
+  //   caseNumber: "VC001VP16428",
+  //   createdAt: { $gte: mints, $lte: maxts },
   };
   const datagot = await model.find(query);
   console.log(datagot.length);
   const end = Date.now();
-  console.log(`sucessfully got records in ${end - start} seconds`);
+  console.log(`sucessfully got records in ${end - start} milliseconds`);
 };
